@@ -21,13 +21,27 @@ function removeItem(index) {
   showItems();
 }
 
+const totalSum = (storeItems) => {
+  let total = 0;
+  storeItems.forEach((item) => {
+    total += parseFloat(item.price);
+  });
+  return total;
+};
+
+const readOnly = (itemLists) => {
+    itemLists.forEach((itemList) => {
+      itemList.readOnly = true;
+    });
+};
+
 const showItems = () => {
   itemContainer.innerHTML = '';
   storeItems.forEach((item, index) => {
     itemContainer.innerHTML += `<div class="item-wrapper d-flex justify-content-between flex-column text-center gy-3 row my-2">
     <div class="item d-flex justify-content-around">
         <input type="text" value="${item.description}" class="item-list">
-        <span>${item.price}</span>
+        <span>${item.price} Kyats</span>
     </div>
     <div class="button-container d-flex justify-content-center">
         <button class="btn btn-primary me-2 edit-btn">Edit</button>
@@ -41,6 +55,12 @@ const showItems = () => {
       removeItem(index);
     });
   });
+
+  const itemLists = document.querySelectorAll('.item-list');
+  readOnly(itemLists);
+
+  const totalValue = totalSum(storeItems);
+  totalPrice.textContent = `${totalValue} Kyats`;
 };
 
 const addItem = () => {

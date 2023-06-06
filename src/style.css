@@ -17,4 +17,10 @@ body {
 
 .item-list {
   border: none;
+  cursor: pointer;
+}
+
+.item-list:focus-visible {
+  border: none;
+  outline: none;
 }
