@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monthly Expense Tracker</title>
+    <!-- link to bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Monthly Expense Trackers</h1>
+    <h1 class="text-center">Monthly Expense Trackers</h1>
+
+    <div class="add-item-container w-50 mx-auto d-flex justify-content-center flex-column">
+        <div class="item-price-container d-flex justify-content-between">
+            <input type="text" placeholder="Item" class="w-50 form-control" id="add-item">
+            <input type="number" placeholder="Price" class="w-50 form-control" id="price">
+        </div>
+        <div class="add-clea-btn-container d-flex  mt-4">
+            <button class="btn btn-primary ms-3" id="add-btn">Add</button>
+            <button class="btn btn-primary ms-3" id="clear-all-btn">Clear All</button>
+        </div>
+    </div>
+
+    <h2 class="text-center">Items</h2>
+
+    <div class="item-container w-50 mx-auto my-4 bg-light">
+    </div>
+
+    <div class="total-container w-50 mx-auto d-flex justify-content-between">
+        <h2>Total</h2>
+        <span id="total-price"></span>
+    </div>
 </body>
 </html>

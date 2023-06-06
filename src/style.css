@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 body {
-  background-color: bisque;
+  background-color:#FFFFFF;
+}
+
+.item-wrapper {
+  border: 1px solid black;
+  padding: 16px;
+}
+
+.item-list {
+  border: none;
 }
