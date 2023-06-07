@@ -63,6 +63,19 @@ const showItems = () => {
     </div>
     </div>`;
   });
+
+  const editBtns = document.querySelectorAll('.edit-btn');
+  editBtns.forEach((editBtn, index) => {
+    editBtn.addEventListener('click', (e) => {
+      const newItem  = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('input');
+      const newPrice = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('span');
+      const newItemValue = newItem.value.trim();
+      const newPriceValue = newPrice.textContent.trim();
+      storeItems[index].description = newItemValue;
+      storeItems[index].price = newPriceValue;
+    })
+  })
+
   const removeBtns = document.querySelectorAll('.remove-btn');
   removeBtns.forEach((btn, index) => {
     btn.addEventListener('click', (e) => {
