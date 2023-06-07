@@ -10,6 +10,9 @@ const addBtn = document.getElementById('add-btn');
 const clearAllBtn = document.getElementById('clear-all-btn');
 const totalPrice = document.getElementById('total-price');
 const storeItems = JSON.parse(localStorage.getItem('Tasks')) || [];
+const errorMessage = document.getElementById('error-message');
+const itemHeader = document.getElementById('items-header');
+const titleContainer = document.querySelector('.total-container');
 
 const storeLocalstorage = (storeItems) => {
   localStorage.setItem('Tasks', JSON.stringify(storeItems));
@@ -30,20 +33,31 @@ const totalSum = (storeItems) => {
 };
 
 const readOnly = (itemLists) => {
-    itemLists.forEach((itemList) => {
-      itemList.readOnly = true;
-    });
+  itemLists.forEach((itemList) => {
+    itemList.readOnly = true;
+  });
+};
+
+const addTitle = (storeItems) => {
+  if (storeItems.length > 0) {
+    titleContainer.classList.add('show-screen');
+    itemHeader.classList.add('show-screen');
+  } else {
+    titleContainer.classList.remove('show-screen');
+    itemHeader.classList.remove('show-screen');
+  }
 };
 
 const showItems = () => {
   itemContainer.innerHTML = '';
+  addTitle(storeItems);
   storeItems.forEach((item, index) => {
-    itemContainer.innerHTML += `<div class="item-wrapper d-flex justify-content-between flex-column text-center gy-3 row my-2">
+    itemContainer.innerHTML += `<div class="item-wrapper d-flex justify-content-between flex-column text-center  row">
     <div class="item d-flex justify-content-around">
         <input type="text" value="${item.description}" class="item-list">
-        <span>${item.price} Kyats</span>
+        <span class="price">${item.price} Kyats</span>
     </div>
-    <div class="button-container d-flex justify-content-center">
+    <div class="button-container d-flex justify-content-center mt-4">
         <button class="btn btn-primary me-2 edit-btn">Edit</button>
         <button class="btn btn-primary remove-btn">Delete</button>
     </div>
@@ -67,6 +81,9 @@ const addItem = () => {
   const itemValue = addItemInput.value.trim();
   const priceValue = priceInput.value.trim();
   if (itemValue !== '' && priceValue !== '') {
+    addItemInput.style.borderColor = '';
+    priceInput.style.borderColor = '';
+    errorMessage.innerText = '';
     const item = {
       description: itemValue,
       price: priceValue,
@@ -76,6 +93,10 @@ const addItem = () => {
     showItems();
     addItemInput.value = '';
     priceInput.value = '';
+  } else {
+    errorMessage.innerText = 'Add both items and Price';
+    addItemInput.style.borderColor = 'red';
+    priceInput.style.borderColor = 'red';
   }
 };
 
