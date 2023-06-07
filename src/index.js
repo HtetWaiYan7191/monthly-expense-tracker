@@ -9,7 +9,7 @@ const priceInput = document.getElementById('price');
 const addBtn = document.getElementById('add-btn');
 const clearAllBtn = document.getElementById('clear-all-btn');
 const totalPrice = document.getElementById('total-price');
-const storeItems = JSON.parse(localStorage.getItem('Tasks')) || [];
+let storeItems = JSON.parse(localStorage.getItem('Tasks')) || [];
 const errorMessage = document.getElementById('error-message');
 const itemHeader = document.getElementById('items-header');
 const titleContainer = document.querySelector('.total-container');
@@ -76,6 +76,11 @@ const showItems = () => {
   const totalValue = totalSum(storeItems);
   totalPrice.textContent = `${totalValue} Kyats`;
 };
+
+clearAllBtn.addEventListener('click', (event) => {
+  storeItems = [];
+  showItems();
+});
 
 const addItem = () => {
   const itemValue = addItemInput.value.trim();
