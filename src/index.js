@@ -55,7 +55,8 @@ const showItems = () => {
     itemContainer.innerHTML += `<div class="item-wrapper d-flex justify-content-between flex-column text-center  row">
     <div class="item d-flex justify-content-around">
         <input type="text" value="${item.description}" class="item-list">
-        <span class="price">${item.price} Kyats</span>
+        <input class="price" type="text" value="${item.price} Kyats">
+
     </div>
     <div class="button-container d-flex justify-content-center mt-4">
         <button class="btn btn-primary me-2 edit-btn">Edit</button>
@@ -64,13 +65,18 @@ const showItems = () => {
     </div>`;
   });
 
+  const removeReadonly = (currentItem, currentValue) => {
+      currentItem.readOnly = false;
+      currentValue.readOnly = false;
+  };
   const editBtns = document.querySelectorAll('.edit-btn');
   editBtns.forEach((editBtn, index) => {
     editBtn.addEventListener('click', (e) => {
       const newItem  = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('input');
-      const newPrice = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('span');
+      const newPrice = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('.price');
       const newItemValue = newItem.value.trim();
       const newPriceValue = newPrice.textContent.trim();
+      removeReadonly(newItem, newPrice)
       storeItems[index].description = newItemValue;
       storeItems[index].price = newPriceValue;
     })
