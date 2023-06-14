@@ -55,13 +55,19 @@
     margin-top: 1.5rem;
   }
 
-  #price {
-    background-color: var(--background-color);
-    border-color: var(--background-color);
+  .price {
+    background-color: var(--main-theme-color);
+    border-color: var(--main-theme-color);
     width: 30%;
     font-size: 21px;
-    color: #333;
     font-weight: 800;
+    padding: 10px;
+    border:none
+  }
+
+  .price:focus {
+    background-color: var(--background-color);
+    color: #333;
   }
 
   #add-item::placeholder {
