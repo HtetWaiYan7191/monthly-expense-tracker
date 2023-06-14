@@ -107,6 +107,12 @@
     cursor: pointer;
     font-size: 20px;
     width: 60%;
+    padding: 10px;
+  }
+
+  .item-list:focus-within {
+    background-color: var(--background-color);
+
   }
 
   .price {

@@ -32,9 +32,13 @@ const totalSum = (storeItems) => {
   return total;
 };
 
-const readOnly = (itemLists) => {
+const readOnly = (itemLists, priceLists) => {
   itemLists.forEach((itemList) => {
     itemList.readOnly = true;
+  });
+
+  priceLists.forEach((priceList) => {
+    priceList.readOnly = true;
   });
 };
 
@@ -90,7 +94,8 @@ const showItems = () => {
   });
 
   const itemLists = document.querySelectorAll('.item-list');
-  readOnly(itemLists);
+  const priceLists = document.querySelectorAll('.price');
+  readOnly(itemLists, priceLists);
 
   const totalValue = totalSum(storeItems);
   totalPrice.textContent = `${totalValue} Kyats`;
