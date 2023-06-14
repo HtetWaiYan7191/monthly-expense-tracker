@@ -83,13 +83,15 @@ const showItems = () => {
   const editBtns = document.querySelectorAll('.edit-btn');
   editBtns.forEach((editBtn, index) => {
     editBtn.addEventListener('click', (e) => {
-      e.target.textContent = 'Update';
+      e.target.textContent = (e.target.textContent !== 'Update') ? 'Update' : 'Edit';
+
       const newItem = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('input');
       const newPrice = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('.price');
       const newItemValue = newItem.value.trim();
       const newPriceValue = newPrice.value.trim();
       removeReadonly(newItem, newPrice);
       storeItems = updateValues(storeItems, newItemValue, newPriceValue, index);
+      storeLocalstorage(storeItems);
     });
   });
 
