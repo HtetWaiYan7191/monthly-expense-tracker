@@ -112,6 +112,8 @@
 
   .item-list:focus-within {
     background-color: var(--background-color);
+    color: #333;
+    border-radius: 15px;
 
   }
 
