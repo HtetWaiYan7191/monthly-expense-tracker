@@ -70,21 +70,28 @@ const showItems = () => {
   });
 
   const removeReadonly = (currentItem, currentValue) => {
-      currentItem.readOnly = false;
-      currentValue.readOnly = false;
+    currentItem.readOnly = false;
+    currentValue.readOnly = false;
+  };
+
+  const updateValues = (items, itemValue, priceValue, index) => {
+    const updatedItems = [...items];
+    updatedItems[index].description = itemValue;
+    updatedItems[index].price = priceValue;
+    return updatedItems;
   };
   const editBtns = document.querySelectorAll('.edit-btn');
   editBtns.forEach((editBtn, index) => {
     editBtn.addEventListener('click', (e) => {
-      const newItem  = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('input');
+      e.target.textContent = 'Update';
+      const newItem = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('input');
       const newPrice = e.target.parentNode.parentNode.firstChild.nextSibling.querySelector('.price');
       const newItemValue = newItem.value.trim();
-      const newPriceValue = newPrice.textContent.trim();
-      removeReadonly(newItem, newPrice)
-      storeItems[index].description = newItemValue;
-      storeItems[index].price = newPriceValue;
-    })
-  })
+      const newPriceValue = newPrice.value.trim();
+      removeReadonly(newItem, newPrice);
+      storeItems = updateValues(storeItems, newItemValue, newPriceValue, index);
+    });
+  });
 
   const removeBtns = document.querySelectorAll('.remove-btn');
   removeBtns.forEach((btn, index) => {
