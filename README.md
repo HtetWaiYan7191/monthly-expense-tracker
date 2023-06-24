@@ -60,7 +60,7 @@
 <!-- LIVE DEMO -->
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://htetwaiyan7191.github.io/monthly-expense-tracker/)
+- [Live Demo Link](https://htetwaiyan7191.github.io/monthly-expense-tracker/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
